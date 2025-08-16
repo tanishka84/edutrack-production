@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack Production - Enterprise Educational Management Platform</title>
+    <meta name="description" content="AI-powered educational management platform with advanced analytics and real-time collaboration">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-container">
+            <div class="login-header">
+                <div class="logo-large">
+                    <i data-lucide="graduation-cap"></i>
+                    <h1>EduTrack Production</h1>
+                    <p>Enterprise Educational Management Platform</p>
+                </div>
+            </div>
+            <div class="login-form">
+                <h2>Welcome Back</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="loginEmail" value="admin@edutrack.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" value="admin123" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">
+                        <i data-lucide="log-in"></i>
+                        Sign In to EduTrack
+                    </button>
+                </form>
+                <div class="login-demo-accounts">
+                    <h4>Demo Accounts:</h4>
+                    <div class="demo-accounts">
+                        <button class="demo-account" data-role="admin">
+                            <i data-lucide="shield-check"></i>
+                            <div class="demo-info">
+                                <span class="demo-role">Administrator</span>
+                                <span class="demo-email">admin@edutrack.com</span>
+                            </div>
+                        </button>
+                        <button class="demo-account" data-role="instructor">
+                            <i data-lucide="user-check"></i>
+                            <div class="demo-info">
+                                <span class="demo-role">Instructor</span>
+                                <span class="demo-email">instructor@edutrack.com</span>
+                            </div>
+                        </button>
+                        <button class="demo-account" data-role="student">
+                            <i data-lucide="user"></i>
+                            <div class="demo-info">
+                                <span class="demo-role">Student</span>
+                                <span class="demo-email">student@edutrack.com</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="login-features">
+                    <div class="feature-item">
+                        <i data-lucide="brain"></i>
+                        <span>AI-Powered Insights</span>
+                    </div>
+                    <div class="feature-item">
+                        <i data-lucide="shield"></i>
+                        <span>Enterprise Security</span>
+                    </div>
+                    <div class="feature-item">
+                        <i data-lucide="zap"></i>
+                        <span>Real-time Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div class="app-container hidden" id="appContainer">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i data-lucide="graduation-cap"></i>
+                    </div>
+                    <span class="logo-text">EduTrack</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item active" data-section="dashboard">
+                        <a href="#" class="nav-link">
+                            <i data-lucide="layout-dashboard"></i>
+                            <span>AI Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-section="students">
+                        <a href="#" class="nav-link">
+                            <i data-lucide="users"></i>
+                            <span>Student Management</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-section="courses">
+                        <a href="#" class="nav-link">
+                            <i data-lucide="book-open"></i>
+                            <span>Course Builder</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-section="lms">
+                        <a href="#" class="nav-link">
+                            <i data-lucide="graduation-cap"></i>
+                            <span>LMS Hub</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-section="analytics">
+                        <a href="#" class="nav-link">
+                            <i data-lucide="trending-up"></i>
+                            <span>Advanced Analytics</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-section="ai-assistant">
+                        <a href="#" class="nav-link">
+                            <i data-lucide="brain"></i>
+                            <span>AI Assistant</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-section="communications">
+                        <a href="#" class="nav-link">
+                            <i data-lucide="messages-square"></i>
+                            <span>Communications</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-section="reports">
+                        <a href="#" class="nav-link">
+                            <i data-lucide="file-bar-chart"></i>
+                            <span>Custom Reports</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-section="settings">
+                        <a href="#" class="nav-link">
+                            <i data-lucide="settings"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-section="security">
+                        <a href="#" class="nav-link">
+                            <i data-lucide="shield-check"></i>
+                            <span>Security</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <span id="currentPage">AI Dashboard</span>
+                    </div>
+                    <div class="ai-status">
+                        <div class="ai-status-indicator active"></div>
+                        <span>AI Systems Online</span>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="header-actions">
+                        <div class="real-time-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Active Users</span>
+                                <span class="stat-value" id="activeUsers">1,247</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Response Time</span>
+                                <span class="stat-value" id="responseTime">89ms</span>
+                            </div>
+                        </div>
+                        
+                        <button class="header-btn ai-chat-toggle" id="aiChatToggle" title="AI Assistant">
+                            <i data-lucide="bot"></i>
+                            <span class="ai-badge"></span>
+                        </button>
+                        
+                        <button class="header-btn theme-toggle" id="themeToggle" title="Toggle Theme">
+                            <i data-lucide="moon"></i>
+                        </button>
+                        
+                        <div class="notifications-dropdown">
+                            <button class="header-btn notifications-btn" id="notificationsBtn" title="Notifications">
+                                <i data-lucide="bell"></i>
+                                <span class="notification-badge">5</span>
+                            </button>
+                            <div class="notifications-panel" id="notificationsPanel">
+                                <div class="notifications-header">
+                                    <h4>Smart Notifications</h4>
+                                    <button class="btn btn--sm" id="markAllReadBtn">Mark all read</button>
+                                </div>
+                                <div class="notifications-list" id="notificationsList">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-dropdown">
+                            <button class="profile-btn" id="profileBtn">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Profile" class="profile-avatar" id="profileAvatar">
+                                <div class="profile-info">
+                                    <span class="profile-name" id="profileName">Dr. Sarah Johnson</span>
+                                    <span class="profile-role" id="profileRole">Administrator</span>
+                                </div>
+                                <i data-lucide="chevron-down"></i>
+                            </button>
+                            <div class="profile-panel" id="profilePanel">
+                                <a href="#" class="profile-link" id="profileSettingsBtn">
+                                    <i data-lucide="user"></i>
+                                    <span>Profile Settings</span>
+                                </a>
+                                <a href="#" class="profile-link" id="preferencesBtn">
+                                    <i data-lucide="settings"></i>
+                                    <span>Preferences</span>
+                                </a>
+                                <a href="#" class="profile-link" id="helpBtn">
+                                    <i data-lucide="help-circle"></i>
+                                    <span>Help & Support</span>
+                                </a>
+                                <hr class="profile-divider">
+                                <a href="#" class="profile-link" id="logoutBtn">
+                                    <i data-lucide="log-out"></i>
+                                    <span>Sign Out</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- AI Dashboard Section -->
+            <section class="content-section active" id="dashboardSection">
+                <div class="section-header">
+                    <div class="header-content">
+                        <h1>AI-Powered Dashboard</h1>
+                        <p>Welcome back! Here are your personalized insights and real-time metrics.</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn--outline" id="exportDashboardBtn">
+                            <i data-lucide="download"></i>
+                            Export Dashboard
+                        </button>
+                        <button class="btn btn--primary" id="customizeViewBtn">
+                            <i data-lucide="layout"></i>
+                            Customize View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Real-Time Metrics Cards -->
+                <div class="realtime-metrics">
+                    <div class="metric-card clickable" data-navigate="students">
+                        <div class="metric-icon success">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-value" id="totalStudentsMetric">2,847</div>
+                            <div class="metric-label">Total Students</div>
+                        </div>
+                        <div class="metric-trend positive">+156 this month</div>
+                    </div>
+                    <div class="metric-card clickable" data-navigate="courses">
+                        <div class="metric-icon primary">
+                            <i data-lucide="book-open"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-value" id="activeCoursesMetric">124</div>
+                            <div class="metric-label">Active Courses</div>
+                        </div>
+                        <div class="metric-trend positive">+12 new courses</div>
+                    </div>
+                    <div class="metric-card clickable" data-navigate="analytics">
+                        <div class="metric-icon warning">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-value" id="completionRateMetric">78.5%</div>
+                            <div class="metric-label">Completion Rate</div>
+                        </div>
+                        <div class="metric-trend positive">+5.2% improvement</div>
+                    </div>
+                    <div class="metric-card clickable" data-navigate="lms">
+                        <div class="metric-icon info">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-value" id="satisfactionMetric">4.7</div>
+                            <div class="metric-label">Student Satisfaction</div>
+                        </div>
+                        <div class="metric-trend positive">0.3 points higher</div>
+                    </div>
+                </div>
+
+                <!-- AI Insights Section -->
+                <div class="ai-insights-section">
+                    <div class="insight-card primary">
+                        <div class="insight-header">
+                            <h3>📈 Predictive Enrollment Forecast</h3>
+                            <span class="confidence-score">94.2% Confidence</span>
+                        </div>
+                        <div class="insight-content">
+                            <div class="forecast-value">+289 Students</div>
+                            <div class="forecast-period">Expected next month based on ML analysis</div>
+                            <div class="insight-actions">
+                                <button class="btn btn--sm btn--outline" id="viewForecastBtn">View Model Details</button>
+                                <button class="btn btn--sm btn--primary" id="prepareResourcesBtn">Prepare Resources</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="insight-card warning">
+                        <div class="insight-header">
+                            <h3>⚠️ At-Risk Students</h3>
+                            <span class="risk-count">3 students flagged</span>
+                        </div>
+                        <div class="insight-content">
+                            <div class="risk-students" id="riskStudents">
+                                <!-- Populated by JS -->
+                            </div>
+                            <div class="insight-actions">
+                                <button class="btn btn--sm btn--outline" id="reviewCasesBtn">Review All Cases</button>
+                                <button class="btn btn--sm btn--primary" id="sendInterventionsBtn">Send Interventions</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Charts Grid -->
+                <div class="charts-grid">
+                    <div class="chart-card large">
+                        <div class="chart-header">
+                            <h3>Enrollment Trends & Predictions</h3>
+                            <div class="chart-controls">
+                                <select class="form-control chart-select" id="enrollmentPeriodSelect">
+                                    <option value="6months">Last 6 months</option>
+                                    <option value="year">Last year</option>
+                                    <option value="all">All time</option>
+                                </select>
+                                <button class="btn btn--sm btn--outline" id="exportEnrollmentBtn">Export</button>
+                            </div>
+                        </div>
+                        <div class="chart-container" style="position: relative; height: 400px;">
+                            <canvas id="enrollmentChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card medium">
+                        <div class="chart-header">
+                            <h3>Course Performance Heatmap</h3>
+                            <button class="btn btn--sm btn--outline" id="drillDownBtn">Drill Down</button>
+                        </div>
+                        <div class="chart-container" style="position: relative; height: 400px;">
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions Panel -->
+                <div class="quick-actions-panel">
+                    <h3>Quick Actions</h3>
+                    <div class="quick-actions-grid">
+                        <button class="quick-action-btn" id="addStudentBtn">
+                            <i data-lucide="user-plus"></i>
+                            <span>Add Student</span>
+                        </button>
+                        <button class="quick-action-btn" id="createCourseBtn">
+                            <i data-lucide="plus-circle"></i>
+                            <span>Create Course</span>
+                        </button>
+                        <button class="quick-action-btn" id="scheduleReportBtn">
+                            <i data-lucide="calendar"></i>
+                            <span>Schedule Report</span>
+                        </button>
+                        <button class="quick-action-btn" id="bulkEnrollBtn">
+                            <i data-lucide="users"></i>
+                            <span>Bulk Enroll</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Student Management Section -->
+            <section class="content-section" id="studentsSection">
+                <div class="section-header">
+                    <div class="header-content">
+                        <h1>Student Management System</h1>
+                        <p>Complete CRUD operations with advanced search, filtering, and bulk actions</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn--outline" id="exportStudentsBtn">
+                            <i data-lucide="download"></i>
+                            Export Data
+                        </button>
+                        <button class="btn btn--primary" id="addNewStudentBtn">
+                            <i data-lucide="user-plus"></i>
+                            Add Student
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Advanced Search and Filters -->
+                <div class="students-controls">
+                    <div class="search-section">
+                        <div class="search-box">
+                            <i data-lucide="search"></i>
+                            <input type="text" placeholder="Search students by name, email, or course..." id="studentSearch" class="form-control">
+                            <button class="search-clear" id="clearSearchBtn" style="display: none;">
+                                <i data-lucide="x"></i>
+                            </button>
+                        </div>
+                        <div class="filter-controls">
+                            <select class="form-control" id="courseFilterSelect">
+                                <option value="">All Courses</option>
+                            </select>
+                            <select class="form-control" id="statusFilterSelect">
+                                <option value="">All Statuses</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="graduated">Graduated</option>
+                            </select>
+                            <button class="btn btn--outline" id="resetFiltersBtn">
+                                <i data-lucide="filter-x"></i>
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="bulk-actions" id="bulkActionsBar" style="display: none;">
+                        <div class="bulk-info">
+                            <span id="selectedCount">0</span> students selected
+                        </div>
+                        <div class="bulk-controls">
+                            <button class="btn btn--sm btn--outline" id="bulkEmailBtn">
+                                <i data-lucide="mail"></i>
+                                Send Email
+                            </button>
+                            <button class="btn btn--sm btn--outline" id="bulkEnrollBtn">
+                                <i data-lucide="book-open"></i>
+                                Bulk Enroll
+                            </button>
+                            <button class="btn btn--sm btn--outline" id="exportSelectedBtn">
+                                <i data-lucide="download"></i>
+                                Export Selected
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Students Data Table -->
+                <div class="students-dashboard">
+                    <div class="data-table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" id="selectAllStudents" class="select-checkbox">
+                                    </th>
+                                    <th>Student</th>
+                                    <th>Course</th>
+                                    <th>Progress</th>
+                                    <th>Status</th>
+                                    <th>Enrollment Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentsTableBody">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="pagination-controls" id="paginationControls">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Course Builder Section -->
+            <section class="content-section" id="coursesSection">
+                <div class="section-header">
+                    <div class="header-content">
+                        <h1>Advanced Course Builder</h1>
+                        <p>Create, manage, and optimize courses with AI-powered recommendations</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn--outline" id="importCourseBtn">
+                            <i data-lucide="upload"></i>
+                            Import Course
+                        </button>
+                        <button class="btn btn--primary" id="createNewCourseBtn">
+                            <i data-lucide="plus"></i>
+                            Create Course
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Course Management Tabs -->
+                <div class="course-tabs">
+                    <button class="tab-btn active" data-tab="overview">Course Overview</button>
+                    <button class="tab-btn" data-tab="builder">Course Builder</button>
+                    <button class="tab-btn" data-tab="analytics">Course Analytics</button>
+                    <button class="tab-btn" data-tab="settings">Course Settings</button>
+                </div>
+
+                <!-- Course Overview Tab -->
+                <div class="tab-content active" id="overviewTab">
+                    <div class="courses-grid" id="coursesGrid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Course Builder Tab -->
+                <div class="tab-content" id="builderTab">
+                    <div class="course-builder-interface">
+                        <div class="builder-sidebar">
+                            <h3>Course Elements</h3>
+                            <div class="element-palette">
+                                <div class="element-item" draggable="true" data-element="video">
+                                    <i data-lucide="video"></i>
+                                    <span>Video Lesson</span>
+                                </div>
+                                <div class="element-item" draggable="true" data-element="text">
+                                    <i data-lucide="file-text"></i>
+                                    <span>Text Content</span>
+                                </div>
+                                <div class="element-item" draggable="true" data-element="quiz">
+                                    <i data-lucide="help-circle"></i>
+                                    <span>Quiz</span>
+                                </div>
+                                <div class="element-item" draggable="true" data-element="assignment">
+                                    <i data-lucide="clipboard"></i>
+                                    <span>Assignment</span>
+                                </div>
+                                <div class="element-item" draggable="true" data-element="discussion">
+                                    <i data-lucide="message-square"></i>
+                                    <span>Discussion</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="builder-canvas" id="courseCanvas">
+                            <div class="canvas-placeholder">
+                                <i data-lucide="plus-circle"></i>
+                                <h3>Start Building Your Course</h3>
+                                <p>Drag elements from the left panel to create your course structure</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LMS Hub Section -->
+            <section class="content-section" id="lmsSection">
+                <div class="section-header">
+                    <div class="header-content">
+                        <h1>Learning Management System Hub</h1>
+                        <p>Comprehensive LMS with AI-powered features and real-time collaboration</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn--outline" id="lmsReportsBtn">
+                            <i data-lucide="bar-chart"></i>
+                            LMS Reports
+                        </button>
+                        <button class="btn btn--primary" id="lmsSettingsBtn">
+                            <i data-lucide="settings"></i>
+                            LMS Settings
+                        </button>
+                    </div>
+                </div>
+
+                <!-- LMS Feature Tabs -->
+                <div class="lms-tabs">
+                    <button class="tab-btn active" data-tab="assignments">Assignments Hub</button>
+                    <button class="tab-btn" data-tab="gradebook">AI Gradebook</button>
+                    <button class="tab-btn" data-tab="discussions">Discussions</button>
+                    <button class="tab-btn" data-tab="content">Content Library</button>
+                    <button class="tab-btn" data-tab="assessments">Assessments</button>
+                </div>
+
+                <!-- Assignments Tab -->
+                <div class="tab-content active" id="assignmentsTab">
+                    <div class="assignments-dashboard">
+                        <div class="assignments-header">
+                            <h3>Assignment Management</h3>
+                            <div class="assignment-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">28</span>
+                                    <span class="stat-label">Active</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">87.3%</span>
+                                    <span class="stat-label">Avg Score</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">94%</span>
+                                    <span class="stat-label">Submission Rate</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">2.3hrs</span>
+                                    <span class="stat-label">Avg Completion</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="assignments-controls">
+                            <button class="btn btn--primary" id="createAssignmentBtn">
+                                <i data-lucide="plus"></i>
+                                Create Assignment
+                            </button>
+                            <button class="btn btn--outline" id="aiGradeBtn">
+                                <i data-lucide="brain"></i>
+                                AI Auto-Grade
+                            </button>
+                            <button class="btn btn--outline" id="bulkActionAssignBtn">
+                                <i data-lucide="layers"></i>
+                                Bulk Actions
+                            </button>
+                        </div>
+                        
+                        <div class="assignments-grid" id="assignmentsGrid">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Gradebook Tab -->
+                <div class="tab-content" id="gradebookTab">
+                    <div class="gradebook-interface">
+                        <div class="gradebook-header">
+                            <h3>AI-Powered Gradebook</h3>
+                            <div class="gradebook-tools">
+                                <button class="btn btn--outline" id="analyticsGradeBtn">
+                                    <i data-lucide="bar-chart-2"></i>
+                                    Grade Analytics
+                                </button>
+                                <button class="btn btn--outline" id="curveGradesBtn">
+                                    <i data-lucide="trending-up"></i>
+                                    Curve Grades
+                                </button>
+                                <button class="btn btn--primary" id="publishGradesBtn">
+                                    <i data-lucide="send"></i>
+                                    Publish Grades
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="gradebook-grid" id="gradebookGrid">
+                            <!-- Advanced gradebook interface populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Advanced Analytics Section -->
+            <section class="content-section" id="analyticsSection">
+                <div class="section-header">
+                    <div class="header-content">
+                        <h1>Advanced Analytics & Business Intelligence</h1>
+                        <p>Real-time insights powered by machine learning and predictive analytics</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn--outline" id="scheduleAnalyticsBtn">
+                            <i data-lucide="calendar"></i>
+                            Schedule Report
+                        </button>
+                        <button class="btn btn--primary" id="customReportBtn">
+                            <i data-lucide="plus"></i>
+                            Create Custom Report
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Analytics Tabs -->
+                <div class="analytics-tabs">
+                    <button class="tab-btn active" data-tab="performance">Performance Analytics</button>
+                    <button class="tab-btn" data-tab="financial">Financial Intelligence</button>
+                    <button class="tab-btn" data-tab="predictive">Predictive Models</button>
+                    <button class="tab-btn" data-tab="realtime">Real-time Metrics</button>
+                </div>
+
+                <!-- Performance Analytics Tab -->
+                <div class="tab-content active" id="performanceTab">
+                    <div class="analytics-grid">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Student Performance Trends</h3>
+                                <select class="form-control" id="performanceCourseFilter">
+                                    <option value="all">All Courses</option>
+                                    <option value="web-dev">Web Development</option>
+                                    <option value="data-science">Data Science</option>
+                                    <option value="mobile-dev">Mobile Development</option>
+                                </select>
+                            </div>
+                            <div class="chart-container" style="position: relative; height: 350px;">
+                                <canvas id="performanceTrendChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Completion Rate Analysis</h3>
+                                <button class="btn btn--sm btn--outline" id="exportCompletionBtn">Export</button>
+                            </div>
+                            <div class="chart-container" style="position: relative; height: 350px;">
+                                <canvas id="completionAnalysisChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Intelligence Tab -->
+                <div class="tab-content" id="financialTab">
+                    <div class="financial-kpis">
+                        <div class="kpi-card revenue">
+                            <div class="kpi-icon">
+                                <i data-lucide="dollar-sign"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <div class="kpi-value">$1,567,800</div>
+                                <div class="kpi-label">Total Revenue</div>
+                                <div class="kpi-change positive">+23.8% YoY</div>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-card recurring">
+                            <div class="kpi-icon">
+                                <i data-lucide="repeat"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <div class="kpi-value">$189,400</div>
+                                <div class="kpi-label">Monthly Recurring</div>
+                                <div class="kpi-change positive">+12.4% MoM</div>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-card ltv">
+                            <div class="kpi-icon">
+                                <i data-lucide="users"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <div class="kpi-value">$12,450</div>
+                                <div class="kpi-label">Customer LTV</div>
+                                <div class="kpi-change positive">+8.2% improvement</div>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-card churn">
+                            <div class="kpi-icon">
+                                <i data-lucide="trending-down"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <div class="kpi-value">3.2%</div>
+                                <div class="kpi-label">Churn Rate</div>
+                                <div class="kpi-change positive">-1.1% reduction</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card full-width">
+                        <div class="chart-header">
+                            <h3>Revenue Forecasting & Analysis</h3>
+                            <div class="chart-controls">
+                                <button class="btn btn--sm btn--outline" id="exportRevenueBtn">Export Financial Report</button>
+                                <button class="btn btn--sm btn--primary" id="forecastModelBtn">View Forecast Model</button>
+                            </div>
+                        </div>
+                        <div class="chart-container" style="position: relative; height: 400px;">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Assistant Section -->
+            <section class="content-section" id="ai-assistantSection">
+                <div class="section-header">
+                    <div class="header-content">
+                        <h1>AI Teaching Assistant</h1>
+                        <p>24/7 intelligent support with advanced NLP and machine learning capabilities</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn--outline" id="aiTrainingBtn">
+                            <i data-lucide="database"></i>
+                            Training Data
+                        </button>
+                        <button class="btn btn--primary" id="aiModelBtn">
+                            <i data-lucide="brain"></i>
+                            Model Settings
+                        </button>
+                    </div>
+                </div>
+
+                <div class="ai-dashboard">
+                    <div class="ai-metrics">
+                        <div class="ai-metric-card">
+                            <div class="metric-icon">
+                                <i data-lucide="message-circle"></i>
+                            </div>
+                            <div class="metric-content">
+                                <div class="metric-value">2,456</div>
+                                <div class="metric-label">Conversations Today</div>
+                                <div class="metric-trend positive">+18% vs yesterday</div>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-metric-card">
+                            <div class="metric-icon">
+                                <i data-lucide="zap"></i>
+                            </div>
+                            <div class="metric-content">
+                                <div class="metric-value">0.3s</div>
+                                <div class="metric-label">Avg Response Time</div>
+                                <div class="metric-trend positive">-0.1s improvement</div>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-metric-card">
+                            <div class="metric-icon">
+                                <i data-lucide="thumbs-up"></i>
+                            </div>
+                            <div class="metric-content">
+                                <div class="metric-value">96.7%</div>
+                                <div class="metric-label">Satisfaction Rate</div>
+                                <div class="metric-trend positive">+2.1% this week</div>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-metric-card">
+                            <div class="metric-icon">
+                                <i data-lucide="cpu"></i>
+                            </div>
+                            <div class="metric-content">
+                                <div class="metric-value">4.8/5</div>
+                                <div class="metric-label">AI Accuracy Score</div>
+                                <div class="metric-trend positive">Continuously improving</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ai-features">
+                        <div class="ai-feature-panel">
+                            <h3>Smart Recommendations</h3>
+                            <div class="recommendation-list" id="aiRecommendationsList">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                        
+                        <div class="ai-feature-panel">
+                            <h3>Content Analysis</h3>
+                            <div class="analysis-dashboard">
+                                <div class="analysis-metric">
+                                    <span class="analysis-label">Sentiment Score</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 82%"></div>
+                                    </div>
+                                    <span class="analysis-value">82% Positive</span>
+                                </div>
+                                <div class="analysis-metric">
+                                    <span class="analysis-label">Engagement Level</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 91%"></div>
+                                    </div>
+                                    <span class="analysis-value">High</span>
+                                </div>
+                                <div class="analysis-metric">
+                                    <span class="analysis-label">Learning Difficulty</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 67%"></div>
+                                    </div>
+                                    <span class="analysis-value">Moderate</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Communications Section -->
+            <section class="content-section" id="communicationsSection">
+                <div class="section-header">
+                    <div class="header-content">
+                        <h1>Advanced Communications Hub</h1>
+                        <p>Real-time messaging, video conferencing, and collaboration tools</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn--outline" id="commSettingsBtn">
+                            <i data-lucide="settings"></i>
+                            Settings
+                        </button>
+                        <button class="btn btn--primary" id="startMeetingBtn">
+                            <i data-lucide="video"></i>
+                            Start Meeting
+                        </button>
+                    </div>
+                </div>
+
+                <div class="communications-grid">
+                    <div class="comm-feature-card">
+                        <div class="feature-icon">
+                            <i data-lucide="video"></i>
+                        </div>
+                        <h3>Video Conferencing</h3>
+                        <p>HD video calls with screen sharing, recording, and breakout rooms</p>
+                        <div class="feature-stats">
+                            <div class="stat">
+                                <span class="stat-number">47</span>
+                                <span class="stat-label">Active Meetings</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">1,234</span>
+                                <span class="stat-label">Participants</span>
+                            </div>
+                        </div>
+                        <button class="btn btn--primary" id="joinMeetingBtn">Join Meeting</button>
+                    </div>
+                    
+                    <div class="comm-feature-card">
+                        <div class="feature-icon">
+                            <i data-lucide="message-square"></i>
+                        </div>
+                        <h3>Real-time Messaging</h3>
+                        <p>Instant messaging with file sharing, emoji reactions, and typing indicators</p>
+                        <div class="feature-stats">
+                            <div class="stat">
+                                <span class="stat-number">892</span>
+                                <span class="stat-label">Active Chats</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">15.7k</span>
+                                <span class="stat-label">Messages Today</span>
+                            </div>
+                        </div>
+                        <button class="btn btn--primary" id="openMessengerBtn">Open Messenger</button>
+                    </div>
+                    
+                    <div class="comm-feature-card">
+                        <div class="feature-icon">
+                            <i data-lucide="megaphone"></i>
+                        </div>
+                        <h3>Announcements</h3>
+                        <p>Targeted announcements with rich media, scheduling, and analytics</p>
+                        <div class="feature-stats">
+                            <div class="stat">
+                                <span class="stat-number">28</span>
+                                <span class="stat-label">Active Announcements</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">94%</span>
+                                <span class="stat-label">Read Rate</span>
+                            </div>
+                        </div>
+                        <button class="btn btn--primary" id="createAnnouncementBtn">Create Announcement</button>
+                    </div>
+                    
+                    <div class="comm-feature-card">
+                        <div class="feature-icon">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <h3>Email Integration</h3>
+                        <p>Automated email notifications, templates, and delivery tracking</p>
+                        <div class="feature-stats">
+                            <div class="stat">
+                                <span class="stat-number">3.2k</span>
+                                <span class="stat-label">Emails Sent</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">87%</span>
+                                <span class="stat-label">Open Rate</span>
+                            </div>
+                        </div>
+                        <button class="btn btn--primary" id="emailCampaignBtn">Email Campaign</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Custom Reports Section -->
+            <section class="content-section" id="reportsSection">
+                <div class="section-header">
+                    <div class="header-content">
+                        <h1>Custom Report Builder</h1>
+                        <p>Drag-and-drop interface for creating advanced reports with real-time data</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn--outline" id="reportTemplatesBtn">
+                            <i data-lucide="file-text"></i>
+                            Templates
+                        </button>
+                        <button class="btn btn--primary" id="createReportBtn">
+                            <i data-lucide="plus"></i>
+                            Create Report
+                        </button>
+                    </div>
+                </div>
+
+                <div class="report-builder-interface">
+                    <div class="report-sidebar">
+                        <h3>Report Elements</h3>
+                        <div class="elements-accordion">
+                            <div class="element-category">
+                                <h4>Charts & Visualizations</h4>
+                                <div class="element-list">
+                                    <div class="report-element" draggable="true" data-element="bar-chart">
+                                        <i data-lucide="bar-chart"></i>
+                                        <span>Bar Chart</span>
+                                    </div>
+                                    <div class="report-element" draggable="true" data-element="line-chart">
+                                        <i data-lucide="trending-up"></i>
+                                        <span>Line Chart</span>
+                                    </div>
+                                    <div class="report-element" draggable="true" data-element="pie-chart">
+                                        <i data-lucide="pie-chart"></i>
+                                        <span>Pie Chart</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="element-category">
+                                <h4>Data Tables</h4>
+                                <div class="element-list">
+                                    <div class="report-element" draggable="true" data-element="data-table">
+                                        <i data-lucide="table"></i>
+                                        <span>Data Table</span>
+                                    </div>
+                                    <div class="report-element" draggable="true" data-element="pivot-table">
+                                        <i data-lucide="grid-3x3"></i>
+                                        <span>Pivot Table</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="element-category">
+                                <h4>Metrics & KPIs</h4>
+                                <div class="element-list">
+                                    <div class="report-element" draggable="true" data-element="metric-card">
+                                        <i data-lucide="square"></i>
+                                        <span>Metric Card</span>
+                                    </div>
+                                    <div class="report-element" draggable="true" data-element="gauge">
+                                        <i data-lucide="gauge"></i>
+                                        <span>Gauge</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="report-canvas" id="reportCanvas">
+                        <div class="canvas-header">
+                            <input type="text" placeholder="Report Title" class="report-title-input" id="reportTitleInput">
+                            <div class="canvas-controls">
+                                <button class="btn btn--sm btn--outline" id="previewReportBtn">
+                                    <i data-lucide="eye"></i>
+                                    Preview
+                                </button>
+                                <button class="btn btn--sm btn--primary" id="saveReportBtn">
+                                    <i data-lucide="save"></i>
+                                    Save Report
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="canvas-content" id="reportCanvasContent">
+                            <div class="canvas-placeholder">
+                                <i data-lucide="plus-circle"></i>
+                                <h3>Build Your Custom Report</h3>
+                                <p>Drag elements from the sidebar to create your report layout</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="content-section" id="settingsSection">
+                <div class="section-header">
+                    <div class="header-content">
+                        <h1>Settings & Preferences</h1>
+                        <p>Configure system settings, user preferences, and integrations</p>
+                    </div>
+                </div>
+
+                <div class="settings-tabs">
+                    <button class="tab-btn active" data-tab="general">General</button>
+                    <button class="tab-btn" data-tab="appearance">Appearance</button>
+                    <button class="tab-btn" data-tab="notifications">Notifications</button>
+                    <button class="tab-btn" data-tab="integrations">Integrations</button>
+                    <button class="tab-btn" data-tab="advanced">Advanced</button>
+                </div>
+
+                <!-- General Settings Tab -->
+                <div class="tab-content active" id="generalTab">
+                    <div class="settings-panel">
+                        <div class="settings-section">
+                            <h3>System Configuration</h3>
+                            <div class="setting-item">
+                                <label class="setting-label">Institution Name</label>
+                                <input type="text" class="form-control" value="University of Excellence" id="institutionNameInput">
+                            </div>
+                            <div class="setting-item">
+                                <label class="setting-label">Default Language</label>
+                                <select class="form-control" id="defaultLanguageSelect">
+                                    <option value="en">English</option>
+                                    <option value="es">Spanish</option>
+                                    <option value="fr">French</option>
+                                    <option value="de">German</option>
+                                </select>
+                            </div>
+                            <div class="setting-item">
+                                <label class="setting-label">Time Zone</label>
+                                <select class="form-control" id="timezoneSelect">
+                                    <option value="UTC">UTC</option>
+                                    <option value="EST">Eastern Time</option>
+                                    <option value="PST">Pacific Time</option>
+                                    <option value="CET">Central European Time</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Appearance Settings Tab -->
+                <div class="tab-content" id="appearanceTab">
+                    <div class="settings-panel">
+                        <div class="settings-section">
+                            <h3>Theme & Layout</h3>
+                            <div class="setting-item">
+                                <label class="setting-label">Color Theme</label>
+                                <div class="theme-options">
+                                    <div class="theme-option active" data-theme="light">
+                                        <div class="theme-preview light"></div>
+                                        <span>Light</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="dark">
+                                        <div class="theme-preview dark"></div>
+                                        <span>Dark</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="auto">
+                                        <div class="theme-preview auto"></div>
+                                        <span>Auto</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="setting-item">
+                                <label class="setting-label">Sidebar Behavior</label>
+                                <div class="setting-options">
+                                    <label class="radio-label">
+                                        <input type="radio" name="sidebarBehavior" value="expanded" checked>
+                                        <span>Always Expanded</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="sidebarBehavior" value="collapsed">
+                                        <span>Auto Collapse</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Security Section -->
+            <section class="content-section" id="securitySection">
+                <div class="section-header">
+                    <div class="header-content">
+                        <h1>Security & Compliance</h1>
+                        <p>Advanced security features, audit trails, and compliance management</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn--outline" id="auditLogBtn">
+                            <i data-lucide="file-search"></i>
+                            Audit Log
+                        </button>
+                        <button class="btn btn--primary" id="securityScanBtn">
+                            <i data-lucide="shield-check"></i>
+                            Security Scan
+                        </button>
+                    </div>
+                </div>
+
+                <div class="security-dashboard">
+                    <div class="security-overview">
+                        <div class="security-score">
+                            <div class="score-circle">
+                                <div class="score-value">98</div>
+                                <div class="score-label">Security Score</div>
+                            </div>
+                        </div>
+                        <div class="security-status">
+                            <div class="status-item active">
+                                <i data-lucide="shield-check"></i>
+                                <span>Two-Factor Authentication Active</span>
+                            </div>
+                            <div class="status-item active">
+                                <i data-lucide="key"></i>
+                                <span>SSL Certificates Valid</span>
+                            </div>
+                            <div class="status-item active">
+                                <i data-lucide="eye"></i>
+                                <span>Audit Logging Enabled</span>
+                            </div>
+                            <div class="status-item warning">
+                                <i data-lucide="alert-triangle"></i>
+                                <span>3 Failed Login Attempts Detected</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="security-features">
+                        <div class="security-card">
+                            <div class="security-icon">
+                                <i data-lucide="smartphone"></i>
+                            </div>
+                            <h3>Two-Factor Authentication</h3>
+                            <p>SMS, authenticator app, and biometric authentication options</p>
+                            <div class="security-stat">
+                                <span class="stat-value">94%</span>
+                                <span class="stat-label">Users Enabled</span>
+                            </div>
+                            <button class="btn btn--sm btn--primary" id="configureTFABtn">Configure</button>
+                        </div>
+                        
+                        <div class="security-card">
+                            <div class="security-icon">
+                                <i data-lucide="key"></i>
+                            </div>
+                            <h3>Single Sign-On</h3>
+                            <p>Google, Microsoft 365, SAML, and LDAP integration</p>
+                            <div class="security-stat">
+                                <span class="stat-value">3</span>
+                                <span class="stat-label">Active Providers</span>
+                            </div>
+                            <button class="btn btn--sm btn--primary" id="manageSSOBtn">Manage</button>
+                        </div>
+                        
+                        <div class="security-card">
+                            <div class="security-icon">
+                                <i data-lucide="file-text"></i>
+                            </div>
+                            <h3>Audit Trail</h3>
+                            <p>Comprehensive logging with advanced search and analytics</p>
+                            <div class="security-stat">
+                                <span class="stat-value">15.7k</span>
+                                <span class="stat-label">Events Today</span>
+                            </div>
+                            <button class="btn btn--sm btn--primary" id="viewAuditBtn">View Logs</button>
+                        </div>
+                        
+                        <div class="security-card">
+                            <div class="security-icon">
+                                <i data-lucide="shield"></i>
+                            </div>
+                            <h3>Data Protection</h3>
+                            <p>GDPR compliance, data encryption, and privacy controls</p>
+                            <div class="security-stat">
+                                <span class="stat-value">100%</span>
+                                <span class="stat-label">Compliant</span>
+                            </div>
+                            <button class="btn btn--sm btn--primary" id="privacySettingsBtn">Settings</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- AI Chat Assistant Widget -->
+    <div class="ai-chat-widget" id="aiChatWidget">
+        <div class="ai-chat-header">
+            <div class="ai-avatar">
+                <i data-lucide="bot"></i>
+            </div>
+            <div class="ai-info">
+                <h4>EduAssist AI</h4>
+                <span class="ai-status">Online • 24/7</span>
+            </div>
+            <button class="ai-chat-close" id="aiChatClose">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <div class="ai-chat-messages" id="aiChatMessages">
+            <div class="ai-message">
+                <div class="message-content">
+                    <p>Hello! I'm EduAssist, your AI teaching assistant. I can help with:</p>
+                    <ul>
+                        <li>Student performance analysis</li>
+                        <li>Course recommendations</li>
+                        <li>Technical support</li>
+                        <li>Data insights and reports</li>
+                    </ul>
+                    <p>How can I assist you today?</p>
+                </div>
+                <div class="message-time">Just now</div>
+            </div>
+        </div>
+        <div class="ai-chat-input">
+            <input type="text" placeholder="Ask me anything about your educational platform..." id="aiChatInput" class="form-control">
+            <button class="ai-send-btn" id="aiSendBtn">
+                <i data-lucide="send"></i>
+            </button>
+        </div>
+        <div class="ai-suggestions" id="aiSuggestions">
+            <div class="suggestion-chip" data-suggestion="How can I improve student engagement?">Improve engagement</div>
+            <div class="suggestion-chip" data-suggestion="Show me at-risk students">At-risk students</div>
+            <div class="suggestion-chip" data-suggestion="Generate a performance report">Generate report</div>
+        </div>
+    </div>
+
+    <!-- Student Add/Edit Modal -->
+    <div class="modal hidden" id="studentModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="studentModalTitle">Add New Student</h3>
+                <button class="modal-close" id="closeStudentModal">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <form id="studentForm">
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">First Name *</label>
+                            <input type="text" class="form-control" id="studentFirstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name *</label>
+                            <input type="text" class="form-control" id="studentLastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address *</label>
+                        <input type="email" class="form-control" id="studentEmail" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Student ID</label>
+                            <input type="text" class="form-control" id="studentId" placeholder="Auto-generated">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="studentPhone">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Major/Program</label>
+                            <select class="form-control" id="studentMajor">
+                                <option value="">Select Major</option>
+                                <option value="computer-science">Computer Science</option>
+                                <option value="data-science">Data Science</option>
+                                <option value="business">Business Administration</option>
+                                <option value="engineering">Engineering</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Year/Level</label>
+                            <select class="form-control" id="studentYear">
+                                <option value="">Select Year</option>
+                                <option value="freshman">Freshman</option>
+                                <option value="sophomore">Sophomore</option>
+                                <option value="junior">Junior</option>
+                                <option value="senior">Senior</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Courses to Enroll</label>
+                        <div class="checkbox-group" id="courseEnrollmentList">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn--outline" id="cancelStudentBtn">Cancel</button>
+                    <button type="submit" class="btn btn--primary" id="saveStudentBtn">
+                        <i data-lucide="save"></i>
+                        Save Student
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner-ring"></div>
+            <div class="loading-text">Loading EduTrack...</div>
+            <div class="loading-subtitle">Initializing AI systems and real-time analytics</div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
